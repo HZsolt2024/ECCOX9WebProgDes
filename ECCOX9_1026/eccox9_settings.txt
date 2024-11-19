@@ -1,0 +1,9 @@
+vscode beállíttásai:
+-Auto save
+-Dark+ modern theme
+
+Bővítmények:
+-Live Server
+-Prettier
+-Code Runner
+-Dark+ Modern
