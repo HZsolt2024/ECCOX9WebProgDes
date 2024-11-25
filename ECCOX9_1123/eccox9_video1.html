@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Videó Lejátszása</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(5, auto);
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #b3d9ff;
+            border: 2px solid #666;
+            border-radius: 15px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        button i {
+            font-size: 24px;
+            color: black;
+        }
+
+        button:hover {
+            background-color: #80bfff;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Videó lejátszása_ECCOX9</h1>
+
+<video id="myVideo" width="400" controls>
+    <source src="video.mp4" type="video/mp4">
+    <source src="video.ogg" type="video/ogg">
+    Az Ön böngészője nem támogatja a videólejátszást.
+</video>
+
+<div class="controls">
+    
+    <button onclick="playVideo()"><i class="material-icons">play_arrow</i></button>
+    <button onclick="pauseVideo()"><i class="material-icons">stop</i></button>
+    <button onclick="togglePlayPause()"><i class="material-icons">pause</i></button>
+
+    <button onclick="muteVideo()"><i class="material-icons">volume_off</i></button>
+    <button onclick="setVolume(0.2)"><i class="material-icons">volume_down</i></button>
+    <button onclick="setVolume(0.5)"><i class="material-icons">volume_up</i></button>
+
+    <button onclick="setPlaybackRate(0.5)"><i class="material-icons">fast_rewind</i></button>
+    <button onclick="setPlaybackRate(1)"><i class="material-icons">play_arrow</i></button>
+    <button onclick="setPlaybackRate(2)"><i class="material-icons">fast_forward</i></button>
+
+    <button onclick="setVideoSize('small')"><i class="material-icons">crop_5_4</i></button>
+    <button onclick="setVideoSize('normal')"><i class="material-icons">crop_16_9</i></button>
+    <button onclick="setVideoSize('large')"><i class="material-icons">photo_size_select_large</i></button>
+
+    <button onclick="checkEnded()"><i class="material-icons">done</i></button>
+    <button onclick="getVideoDuration()"><i class="material-icons">timer</i></button>
+    <button onclick="getCurrentTime()"><i class="material-icons">access_time</i></button>
+</div>
+
+<script>
+    const video = document.getElementById('myVideo');
+
+    function playVideo() {
+        video.play();
+    }
+
+    function pauseVideo() {
+        video.pause();
+    }
+
+    function togglePlayPause() {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }
+
+    function muteVideo() {
+        video.muted = !video.muted;
+    }
+
+    function setVolume(level) {
+        video.volume = level;
+    }
+
+    function setPlaybackRate(speed) {
+        video.playbackRate = speed;
+    }
+
+    function checkEnded() {
+        alert(video.ended ? "A videó befejeződött!" : "A videó még nem ért véget.");
+    }
+
+    function getVideoDuration() {
+        alert(`A videó hossza: ${video.duration.toFixed(2)} másodperc.`);
+    }
+
+    function getCurrentTime() {
+        alert(`Jelenlegi idő: ${video.currentTime.toFixed(2)} másodperc.`);
+    }
+
+    function setVideoSize(size) {
+        switch (size) {
+            case 'small':
+                video.width = 320;
+                break;
+            case 'normal':
+                video.width = 640;
+                break;
+            case 'large':
+                video.width = 1024;
+                break;
+        }
+    }
+</script>
+
+</body>
+</html>

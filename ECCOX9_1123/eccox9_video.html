@@ -1,0 +1,116 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <title>Video Lejátszása</title>
+</head>
+
+<body> 
+
+<h1>Videó lejátszása_ECCOX9</h1>
+
+<video id="Video" width="400" controls>
+  <source src="video.mp4" type="video/mp4">
+  <source src="video.ogg" type="video/ogg">
+  Az Ön böngészője nem támogatja a videólejátszást.
+</video>
+
+<div class="controls">
+    <button onclick="playVideo()">Indítás</button>
+    <button onclick="pauseVideo()">Leállás</button>
+
+    &nbsp;
+
+    <button onclick="togglePlayPause()">Indítás / Leállítás</button>
+    <br>
+    <button onclick="muteVideo()">Néma</button>
+    <button onclick="setVolume(0.2)">Halk</button>
+    <button onclick="setVolume(0.5)">Hangos</button>
+
+    &nbsp;
+
+    &nbsp;
+
+    <button onclick="setPlaybackRate(0.25)">Nagyon lassú</button>
+    <button onclick="setPlaybackRate(0.5)">Lassú</button>
+    <button onclick="setPlaybackRate(1)">Normál</button>
+    <button onclick="setPlaybackRate(1.5)">Gyorsabb</button>
+    <button onclick="setPlaybackRate(2)">Nagyon gyors</button>
+    <br>
+    <button onclick="setVideoSize('small')">Kicsi</button>
+    <button onclick="setVideoSize('normal')">Normál</button>
+    <button onclick="setVideoSize('large')">Nagy</button>
+
+    &nbsp;
+
+    &nbsp;
+
+    <button onclick="checkEnded()">Befejeződött?</button>
+    <button onclick="getVideoDuration()">Videó hossza</button>
+    <button onclick="getCurrentTime()">Jelenlegi pozíció</button>
+</div>
+
+<script>
+    const video = document.getElementById('myVideo');
+
+    function playVideo() {
+        video.play();
+    }
+
+    function pauseVideo() {
+        video.pause();
+    }
+
+    function togglePlayPause() {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }
+
+    function muteVideo() {
+        video.muted = !video.muted;
+    }
+
+    function setVolume(level) {
+        video.volume = level;
+    }
+
+    function setPlaybackRate(speed) {
+        video.playbackRate = speed;
+    }
+
+    function checkEnded() {
+        const isEnded = video.ended ? "Igen, a videó befejeződött." : "Nem, a videó még nem fejeződött be.";
+        alert(isEnded);
+    }
+
+    function getVideoDuration() {
+        const duration = video.duration.toFixed(2);
+        alert(`A videó hossza: ${duration} másodperc.`);
+    }
+
+    function getCurrentTime() {
+        const currentTime = video.currentTime.toFixed(2);
+        alert(`A jelenlegi pozíció: ${currentTime} másodperc.`);
+    }
+
+    function setVideoSize(size) {
+        switch (size) {
+            case 'small':
+                video.width = 320;
+                break;
+            case 'normal':
+                video.width = 640;
+                break;
+            case 'large':
+                video.width = 1024;
+                break;
+            default:
+                video.width = 640;
+        }
+    }
+</script>
+
+</body> 
+</html>
